@@ -1,0 +1,58 @@
+﻿<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart1);
+	  google.setOnLoadCallback(drawChart2);
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Jahr', 'Laufen', 'Radfahren','Sonstiges'],
+          ['2010',  814, 939,  9 ],
+          ['2011',  1432, 1400, 18],
+          ['2012',  1574, 1431, 77],
+          ['2013',  1780, 1838, 180],
+	  ['2014',  1431, 1588, 188],
+	  ['2015',  1494, 1908, 283],
+	  ['2016',  1785, 1710, 370],
+        ]);
+
+        var options = {
+          title: 'Sportliche Jahresstatistiken - Distanz',
+          hAxis: {title: 'Jahr', titleTextStyle: {color: 'red'}},
+          vAxis: {title: 'km', titleTextStyle: {color: 'red'}},
+		  isStacked: true
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+      function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Jahr', 'Laufen','Radfahren','Sonstiges'],
+          ['2010',  75,46,1],
+          ['2011',  129,63,22],
+          ['2012',  136,87,53],
+          ['2013',  154,76,50],
+          ['2014',  121,84,81],
+          ['2015',  123,88,108],
+          ['2016',  151,88,140],
+        ]);
+
+        var options = {
+          title: 'Sportliche Jahresstatistiken - Zeit',
+          hAxis: {title: 'Jahr', titleTextStyle: {color: 'red'}},
+          vAxis: {title: 'Zeit [h]', titleTextStyle: {color: 'red'}},
+		  isStacked: true
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+      }	  
+    </script>
+  </head>
+  <body>
+    <div id="chart_div1" style="width: 900px; height: 500px;"></div>
+	<div id="chart_div2" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
